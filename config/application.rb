@@ -30,6 +30,8 @@ module GbBank
       g.test_framework :rspec
     end
 
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
     # Regex formats
     config.x.email_format = /\A.*@.+\..+\z/
   end

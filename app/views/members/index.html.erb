@@ -1,0 +1,8 @@
+<ol>
+  <% @members.each do |member| %>
+    <li><%= member.name %>, <%= member.email %><br>
+      <%= t('activerecord.attributes.member.balance') %>: <%= number_to_currency(member.balance) %><br>
+      <%= link_to(t('members.edit.edit_member'), edit_member_path(id: member.id)) %>
+    </li>
+  <% end %>
+</ol>

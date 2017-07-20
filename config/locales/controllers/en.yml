@@ -1,0 +1,18 @@
+en:
+  members:
+    index:
+      members: Members
+    new:
+      create_new_member: Create New Member
+    create:
+      member_was_saved: Member was successfully saved
+    edit:
+      edit_member: Edit Member Details
+    update:
+      member_was_updated: Member was successfully updated
+  transactions:
+    new:
+      create_new_transaction: Create new transaction
+    create:
+      member_not_found: "Member does not exist. Please use different email."
+      transaction_was_saved: Transaction was successfully saved
