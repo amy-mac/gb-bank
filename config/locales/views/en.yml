@@ -2,3 +2,6 @@ en:
   navigation:
     create_member: Create Member
     create_transaction: Create Transaction
+  transactions:
+    new:
+      must_exist: Must already exist
