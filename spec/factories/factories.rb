@@ -14,7 +14,7 @@ FactoryGirl.define do
 
   factory :transaction do
     description "New blaster pistol"
-    amount 543.35
+    amount -43.35
     date { Time.zone.yesterday }
     member { FactoryGirl.create(:member) }
   end

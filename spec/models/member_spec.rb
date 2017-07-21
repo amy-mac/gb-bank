@@ -49,8 +49,37 @@ RSpec.describe Member, type: :model do
 
       it "returns an error message about uniqueness" do
         subject
-        expect(member.errors[:email]).to include(I18n.t('activerecord.errors.messages.unique'))
+        expect(member.errors[:email]).to include(I18n.t('activerecord.errors.messages.taken'))
       end
+    end
+
+    context "when the balance will be less than -150.00" do
+      before { member.balance = -160.00 }
+
+      it { is_expected.to be_falsey }
+
+      it "returns an error message on balance" do
+        subject
+        expect(member.errors[:balance]).to include(I18n.t('activerecord.errors.messages.greater_than_or_equal_to', count: -150.0))
+      end
+    end
+  end
+
+  describe "#update_balance" do
+    let(:member) { FactoryGirl.create(:member) }
+
+    subject { member.balance }
+
+    it { is_expected.to eq(100.00) }
+
+    context "when money is added" do
+      before { member.update_balance(35.50) }
+      it { is_expected.to eq(135.50) }
+    end
+
+    context "when money is subtracted" do
+      before { member.update_balance(-45.00) }
+      it { is_expected.to eq(55.00) }
     end
   end
 end
