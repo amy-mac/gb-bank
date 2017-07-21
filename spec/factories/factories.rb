@@ -10,6 +10,10 @@ FactoryGirl.define do
     trait :no_name do
       name nil
     end
+
+    trait :include_balance do
+      balance 32.00
+    end
   end
 
   factory :transaction do
@@ -17,5 +21,9 @@ FactoryGirl.define do
     amount -43.35
     date { Time.zone.yesterday }
     member { FactoryGirl.create(:member) }
+
+    trait :no_member do
+      member nil
+    end
   end
 end
