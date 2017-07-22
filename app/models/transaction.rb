@@ -26,6 +26,7 @@ class Transaction < ApplicationRecord
   after_create :save_member_balance
 
   def save_member_balance
+    member.reload.update_balance(amount)
     member.save!
   end
 end

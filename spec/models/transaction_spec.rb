@@ -67,7 +67,7 @@ RSpec.describe Transaction, type: :model do
 
   describe "#update_member_balance" do
     context "when the transaction is not valid" do
-      before { transaction.amount = -200.00 }
+      before { transaction.amount = -260.00 }
 
       it "does not ask member to save its balance" do
         expect(member).to_not receive(:save!)

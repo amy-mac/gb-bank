@@ -1,7 +1,7 @@
 class Member < ApplicationRecord
   has_many :transactions, dependent: :destroy
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: Rails.configuration.x.email_format }
   validates :name, presence: true
   validates :balance, numericality: { greater_than_or_equal_to: -150.00 }
 

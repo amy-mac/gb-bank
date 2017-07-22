@@ -36,20 +36,33 @@ RSpec.describe Member, type: :model do
 
     context "when there is an email" do
       it { is_expected.to be_truthy }
-    end
 
-    context "when there is already a member with the same email" do
-      let!(:other_member) { FactoryGirl.create(:member, email: "leia@alderaan.gov") }
+      context "and there is already a member with the same email" do
+        let!(:other_member) { FactoryGirl.create(:member, email: "leia@alderaan.gov") }
 
-      before do
-        member.email = "leia@alderaan.gov"
+        before do
+          member.email = "leia@alderaan.gov"
+        end
+
+        it { is_expected.to be_falsey }
+
+        it "returns an error message about uniqueness" do
+          subject
+          expect(member.errors[:email]).to include(I18n.t('activerecord.errors.messages.taken'))
+        end
       end
 
-      it { is_expected.to be_falsey }
+      context "and the email is not a valid email address" do
+        before do
+          member.email = "leia@alderaan"
+        end
 
-      it "returns an error message about uniqueness" do
-        subject
-        expect(member.errors[:email]).to include(I18n.t('activerecord.errors.messages.taken'))
+        it { is_expected.to be_falsey }
+
+        it "returns an error message for email" do
+          subject
+          expect(member.errors[:email]).to include(I18n.t('activerecord.errors.messages.invalid'))
+        end
       end
     end
 
