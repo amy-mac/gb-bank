@@ -11,6 +11,14 @@ RSpec.describe "members/index.html.erb", type: :view do
     render
   end
 
+  it "displays a search input for members" do
+    expect(rendered).to have_field("member[name]")
+  end
+
+  it "does not display the no results message" do
+    expect(rendered).to have_css("#js-noResults", visible: false)
+  end
+
   it "displays an ordered list of the members" do
     expect(rendered).to have_css("ol li", count: 3)
   end

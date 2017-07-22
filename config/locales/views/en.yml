@@ -5,3 +5,7 @@ en:
   transactions:
     new:
       must_exist: Must already exist
+  members:
+    index:
+      search_members: Search for member
+      no_results: No results found.

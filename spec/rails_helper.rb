@@ -40,7 +40,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :feature) do
-    resize_window_default
+    #resize_window_default
   end
 
   config.before(:each, :mobile, type: :feature) do
@@ -57,8 +57,9 @@ Capybara.configure do |config|
   config.javascript_driver = :webkit
 end
 
-Capybara::Screenshot.autosave_on_failure = false
+Capybara::Screenshot.autosave_on_failure = true
 
 Capybara::Webkit.configure do |config|
   config.block_unknown_urls
+  config.raise_javascript_errors = true
 end
