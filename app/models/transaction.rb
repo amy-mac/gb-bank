@@ -11,7 +11,7 @@ class Transaction < ApplicationRecord
     return unless date
 
     if date >= Time.zone.tomorrow
-      errors.add(:date, I18n.t('activerecord.errors.messages.no_date_in_future'))
+      errors.add(:date, :no_date_in_future)
     end
   end
 
@@ -19,7 +19,7 @@ class Transaction < ApplicationRecord
     return unless member && amount
 
     unless member.update_balance(amount)
-      errors.add(:member, I18n.t('activerecord.errors.messages.member_overdrawn')) unless errors[:member].present?
+      errors.add(:member, :member_overdrawn) unless errors[:member].present?
     end
   end
 
