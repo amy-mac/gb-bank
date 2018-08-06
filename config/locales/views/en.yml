@@ -1,0 +1,11 @@
+en:
+  navigation:
+    create_member: Create Member
+    create_transaction: Create Transaction
+  transactions:
+    new:
+      must_exist: Must already exist
+  members:
+    index:
+      search_members: Search for member
+      no_results: No results found.

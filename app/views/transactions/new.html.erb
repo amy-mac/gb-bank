@@ -1,0 +1,19 @@
+<%= form_for(@transaction) do |f| %>
+  <div class="form_element">
+    <%= label_tag(:member_email) %>
+    <%= email_field(:member, :email, required: true, placeholder: t('.must_exist')) %>
+  </div>
+  <div class="form_element">
+    <%= f.label(:date) %>
+    <%= f.date_field(:date, required: true) %>
+  </div>
+  <div class="form_element">
+    <%= f.label(:description) %>
+    <%= f.text_field(:description, required: true) %>
+  </div>
+  <div class="form_element">
+    <%= f.label(:amount) %>
+    <%= f.number_field(:amount, required: true, step: 0.01) %>
+  </div>
+  <%= f.submit %>
+<% end %>

@@ -10,8 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101000000) do
+ActiveRecord::Schema.define(version: 20170722160133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "members", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.decimal "balance", precision: 30, scale: 2, default: "100.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["balance"], name: "index_members_on_balance"
+    t.index ["email"], name: "index_members_on_email"
+    t.index ["name"], name: "index_members_on_name"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "description"
+    t.decimal "amount", precision: 30, scale: 2
+    t.datetime "date"
+    t.bigint "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_transactions_on_member_id"
+  end
+
 end

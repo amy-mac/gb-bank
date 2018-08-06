@@ -9,7 +9,7 @@
   <% ["Raleway", "Open+Sans"].each do |family| %>
     <%=
       stylesheet_link_tag(
-        "http://fonts.googleapis.com/css?family=#{family}",
+        "https://fonts.googleapis.com/css?family=#{family}",
         type: "text/css"
       )
     %>
@@ -18,7 +18,34 @@
 </head>
 <body id="<%= page_specific_css_id %>">
 
-<%= yield %>
+  <header class="group">
+    <h1><%= @page_title || "Gb Bank" %></h1>
+    <nav>
+      <ul>
+        <li><%= link_to(t('members.index.members'), root_path) %></li>
+        <li><%= link_to(t('navigation.create_member'), new_member_path) %></li>
+        <li><%= link_to(t('navigation.create_transaction'), new_transaction_path) %></li>
+      </ul>
+    </nav>
+  </header>
+
+  <% flash.each do |name, messages| %>
+    <div class=<%= name %>>
+      <ul>
+        <% if messages.is_a?(Array) %>
+          <% messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        <% else %>
+          <li><%= messages %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div role="main">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

@@ -22,8 +22,9 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled =
-    ENV["RAILS_PUBLIC_FILE_SERVER_ENABLED"].present?
+  #config.public_file_server.enabled =
+  #  ENV["RAILS_PUBLIC_FILE_SERVER_ENABLED"].present?
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -79,5 +80,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Disable verbosity when logging on production
-  Rails.logger.level = Logger::INFO
+  #Rails.logger.level = Logger::INFO
 end

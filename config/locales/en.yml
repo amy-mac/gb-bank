@@ -2,3 +2,27 @@ en:
   home:
     index:
       heading: Welcome to GB Bank!
+  members:
+    index:
+  activerecord:
+    errors:
+      messages:
+        blank: can't be blank
+        invalid: is invalid
+        taken: has already been taken by another member
+        greater_than_or_equal_to: must be greater than or equal to %{count}
+        no_date_in_future: cannot be in the future
+        member_overdrawn: will be overdrawn
+    models:
+      member: Member
+      transaction: Transaction
+    attributes:
+      member:
+        name: Name
+        email: Email
+        balance: Balance
+      transaction:
+        description: Description
+        amount: Amount
+        date: Date of Transaction
+

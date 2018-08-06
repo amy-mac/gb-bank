@@ -1,0 +1,17 @@
+<label>
+  <%= t('.search_members') %>
+  <%= search_field(:member, :name) %>
+</label>
+
+<section>
+  <p id="js-noResults" class="hide"><em><%= t('.no_results') %></em></p>
+
+  <ol>
+    <% @members.each do |member| %>
+      <li><%= member.name %>, <%= member.email %><br>
+        <%= t('activerecord.attributes.member.balance') %>: <%= number_to_currency(member.balance) %><br>
+        <%= link_to(t('members.edit.edit_member'), edit_member_path(id: member.id)) %>
+      </li>
+    <% end %>
+  </ol>
+</section>
